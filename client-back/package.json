@@ -4,8 +4,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "watch": "ts-node-dev src/index.ts",
-    "test": "npx jest --watchAll",
-    "update-mocked-modules": "rm -R shared; cp -R ../shared src/shared"
+    "test": "npx jest --watchAll"
   },
   "repository": {
     "type": "git",

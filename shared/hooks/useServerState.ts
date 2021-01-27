@@ -3,11 +3,9 @@ import {
   useEffect,
   useState,
 } from 'react'
-import type {
-  ServerStateAccessPath,
-} from '../lib/serverStateAccess'
-import { notFound } from '../shared/contracts'
-import { getServerStateAccess } from '../lib/serverStateAccess'
+import type { ServerStateAccessPath } from '../serverStateAccess'
+import { notFound } from '../contracts'
+import { getServerStateAccess } from '../serverStateAccess'
 
 type ReturnType<T> = [T, (t: T) => void]
 
@@ -33,8 +31,8 @@ export default function useServerState<
         const fromServer = await stateAccessRef.current.get(
           path
         )
-        fromServer !== notFound && setLocalState(fromServer)
-  
+        fromServer !== notFound &&
+          setLocalState(fromServer)
       } catch (e) {
         console.error(e)
       }
@@ -45,7 +43,10 @@ export default function useServerState<
 
   function setState(t: T) {
     setLocalState(t as any) // Uhh... WTF?
-    stateAccessRef.current.set(path, t as any) // Not sure why TS isn't handling this correctly
+    stateAccessRef.current.set(
+      path,
+      t as any
+    ) // Not sure why TS isn't handling this correctly
   }
 
   return [localState, setState]

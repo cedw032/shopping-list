@@ -1,11 +1,19 @@
-import EditableShoppingList from './components/EditableShoppingList'
-
-//const currentRoute = 'shoppingList'
+import useRouter from './shared/hooks/useRouter'
+import RouteRenderer from './shared/components/RouteRenderer'
+import NavBar from './shared/components/NavBar'
 
 export default function App() {
+  const {
+    routeStructure,
+    navigate
+  } = useRouter('doubleList')
+
   return (
     <div style={styles.container}>
-      <EditableShoppingList id='test'/>
+      <NavBar {...{navigate}}/>
+      <RouteRenderer
+        {...{ routeStructure }}
+      />
     </div>
   )
 }

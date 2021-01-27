@@ -1,4 +1,6 @@
-import { Fragment } from 'react'
+/* eslint react/no-typos: 0 */
+import 'react'
+import List from './List'
 import useServerState from '../hooks/useServerState'
 import type { UserText } from './EditableText'
 import EditableTextList from './EditableTextList'
@@ -9,10 +11,13 @@ const basePath = 'shoppingList'
 
 type Props = {
   id: ShoppingListId
+  key?: string | number
 }
 
-export default function EditableShoppingList({id}: Props) {
-
+export default function EditableShoppingList({
+  id,
+  key,
+}: Props) {
   const path = `${basePath}--${id}`
 
   const [
@@ -24,12 +29,12 @@ export default function EditableShoppingList({id}: Props) {
   )
 
   return (
-    <Fragment>
+    <List key={key} style={{alignItems: 'flex-start'}}>
       <h1>Shopping List</h1>
       <EditableTextList
         list={shoppingList}
         setList={setShoppingList}
       />
-    </Fragment>
+    </List>
   )
 }

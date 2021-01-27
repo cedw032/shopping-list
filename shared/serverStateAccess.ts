@@ -1,9 +1,9 @@
-import type {NotFound} from '../shared/contracts'
+import type { NotFound } from './contracts'
 
 export type ServerStateAccessPath = string
 
 const stateUrl =
-  'http://localhost:8089/state'
+  'http://localhost:9898/state'
 
 type ServerStateAccess<T> = {
   set: (
@@ -23,18 +23,17 @@ export function getServerStateAccess<
       path: ServerStateAccessPath,
       v: T
     ) => {
-      console.log('CALLING SET')
-      const response = await fetch(
+      fetch(
         `${stateUrl}/${path}`,
         {
           method: 'PUT',
           headers: {
-            'content-type': 'application/json'
+            'content-type':
+              'application/json',
           },
           body: JSON.stringify(v),
         }
       )
-      console.log(await response.json())
     },
     get: async (
       path: ServerStateAccessPath

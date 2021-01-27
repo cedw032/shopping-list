@@ -1,10 +1,10 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import type {Style} from '../constants/style'
-import { column } from '../constants/style'
+import { UiNode, Style } from '../constants/common'
+import {column} from '../constants/common'
 
 type Props = {
-  children?: Array<JSX.Element>
+  children?: Array<UiNode>
   style?: Style
 }
 
