@@ -37,7 +37,7 @@ The shared directory is supposd to simulate node modules.  This could have been 
 For some clients updating can be a hassle (I'm looking at you Mobile)...  Ideally the client front will perform as little processing as possible, and allow the app to be extended without having to update the client.
 I have demonstrated this further on the branch `backseat-driver`
 
-## What missing
+## What's missing
 There is still a lot to be done here.  Authentication (Identity) and Authorization (Access managent) are the first two that come to mind, but also there are a number of pieces missing from the intended final architecture.
 
 In a real commercial product I would probably include sentry (error loggin) and heap (analytics)
