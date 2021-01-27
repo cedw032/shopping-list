@@ -4,7 +4,8 @@ The client front is the code that will run on the users device.  The client back
 It is intended that this service would in the future deal with another service that provides domain level actions and queries, probably via a rest API.
 
 ## Setup
-```
+Copying and pasting the entire code block below into your terminal should open the shopping list in your browser with a local server running.
+``` shell
 sudo rm -R shopping-list
 git clone git@github.com:cedw032/shopping-list.git
 cd shopping-list
