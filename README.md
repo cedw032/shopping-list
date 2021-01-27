@@ -1,7 +1,7 @@
 ## What is this?
 This branch was created to demonstrate the power of driving the back from the front.
 There are two buttons that should be visible at the top that navigate between two different views with a basic router.
-You will notice the clicking the buttons will switch between two views, one with one list aligned left, and another with two lists with space between.
+You will notice that clicking the buttons will switch between two views, one with one list aligned left, and another with two lists with space between.
 
 The data that drives all of this can be found in the mock data in `stateAccess` in the client-back.
 Simply removing one of the items from `mockNavItems` will remove it from the item from the nav bar.  Or adding another shopping list to the `mockDoubleListRoute` will give you a list with three routes.
