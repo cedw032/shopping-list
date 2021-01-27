@@ -38,4 +38,7 @@ I have demonstrated this further on the branch `backseat-driver`
 ## What missing
 There is still a lot to be done here.  Authentication (Identity) and Authorization (Access managent) are the first two that come to mind, but also there are a number of pieces missing from the intended final architecture.
 
+In a real commercial product I would probably include sentry (error loggin) and heap (analytics)
+
+More test coverage would be great.
 
