@@ -23,8 +23,7 @@ export function getServerStateAccess<
       path: ServerStateAccessPath,
       v: T
     ) => {
-      console.log('CALLING SET')
-      const response = await fetch(
+      fetch(
         `${stateUrl}/${path}`,
         {
           method: 'PUT',
@@ -34,7 +33,6 @@ export function getServerStateAccess<
           body: JSON.stringify(v),
         }
       )
-      console.log(await response.json())
     },
     get: async (
       path: ServerStateAccessPath
