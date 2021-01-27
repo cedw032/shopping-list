@@ -13,7 +13,6 @@ export default function EditableTextList({
   list,
   setList,
 }: Props) {
-  console.log('LIST', list)
   const existingChildren = list.map(
     (child, i) => (
       <EditableText
