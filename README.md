@@ -26,7 +26,7 @@ This relatively basic component nicely ensures there is always a free space for 
 The general approach here has been to avoid the use of primitive types whereever possible. There are a number of good reasons to do that.  It can be used to ensure that functions are less likely to be misused as well as providing a source of documentation.
 
 ## State as a Service
-The BFF (Backend for Frontend) is currently implemented as a simple all purpose state service.  While this is intended to change in the future the State service can be used and provided to other services.  The idea here is that you can develop against the production system.  Rather than having to spin up a dev instance of the whole system the idea here is that only dev instances of the service being worked on and the state service need tobe run locally (There may be need for some sort of ervice locator also).  This means that when developing a service all other services are know to behave exactly the same as the production sevices, because they actually are the production services.  It's a bit of an experimental idea, but I think it has potential and I am keen to investigate it further.  This will be super helpful for CD as changes will be more likely to bemade in a non-breaking way.
+The BFF (Backend for Frontend) is currently implemented as a simple all purpose state service.  While this is intended to change in the future the State service can be used and provided to other services.  The idea here is that you can develop against the production system.  Rather than having to spin up a dev instance of the whole system the idea here is that only dev instances of the service being worked on and the state service need tobe run locally (There may be need for some sort of ervice locator also depending on what solution we use for that).  This means that when developing a service all other services are known to behave exactly the same as the production sevices, because they actually are the production services.  It's a bit of an experimental idea, but I think it has potential and I am keen to investigate it further.  This will be super helpful for CD as changes will be more likely to be made in a non-breaking way.
 
 ## Shared
 The shared directory is supposd to simulate node modules.  This could have been achieved with `yarn link` but I was just trying to figure out how to get something up and runing separately.  The reason moving items out into separate packages is so that the same code can be used from different services and clients.
@@ -40,5 +40,10 @@ There is still a lot to be done here.  Authentication (Identity) and Authorizati
 
 In a real commercial product I would probably include sentry (error loggin) and heap (analytics)
 
-More test coverage would be great.
+More test coverage would be great.  
 
+Simple rules around the modification of test files can be used to facilitate semantic versioning which will allow for multi version support.
+
+
+## Contact
+Please feel free to send me a message at chad.edwards.mail@gmail.com if you are having any troule getting this running.
