@@ -7,7 +7,7 @@ import { getStateAccess } from './stateAccess'
 const state = getStateAccess()
 
 const app = express()
-const port = 8080
+const port = 9090
 
 app.use(cors())
 app.use(bodyParser.json())
