@@ -1,0 +1,48 @@
+import type {NotFound} from '../shared/contracts'
+
+export type ServerStateAccessPath = string
+
+const stateUrl =
+  'http://localhost:8089/state'
+
+type ServerStateAccess<T> = {
+  set: (
+    path: ServerStateAccessPath,
+    t: T
+  ) => Promise<void>
+  get: (
+    path: ServerStateAccessPath
+  ) => Promise<T | NotFound>
+}
+
+export function getServerStateAccess<
+  T
+>(): ServerStateAccess<T> {
+  return {
+    set: async (
+      path: ServerStateAccessPath,
+      v: T
+    ) => {
+      console.log('CALLING SET')
+      const response = await fetch(
+        `${stateUrl}/${path}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(v),
+        }
+      )
+      console.log(await response.json())
+    },
+    get: async (
+      path: ServerStateAccessPath
+    ) => {
+      const response = await fetch(
+        `${stateUrl}/${path}`
+      )
+      return await response.json()
+    },
+  }
+}
