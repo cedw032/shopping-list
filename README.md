@@ -10,7 +10,7 @@ sudo rm -R shopping-list
 git clone git@github.com:cedw032/shopping-list.git
 cd shopping-list
 yarn prep
-cd client-back && yarn && yarn start
+cd client-back && yarn && yarn start &!
 cd ../client-front && yarn && yarn start
 ```
 
