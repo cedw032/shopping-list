@@ -5,6 +5,7 @@ It is intended that this service would in the future deal with another service t
 
 ## Setup
 ```
+sudo rm -R shopping-list
 git clone git@github.com:cedw032/shopping-list.git
 cd shopping-list
 yarn prep
