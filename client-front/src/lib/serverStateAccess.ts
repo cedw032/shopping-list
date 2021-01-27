@@ -3,7 +3,7 @@ import type {NotFound} from '../shared/contracts'
 export type ServerStateAccessPath = string
 
 const stateUrl =
-  'http://localhost:8089/state'
+  'http://localhost:8080/state'
 
 type ServerStateAccess<T> = {
   set: (
