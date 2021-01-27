@@ -46,6 +46,7 @@ More test coverage would be great.
 
 Simple rules around the modification of test files can be used to facilitate semantic versioning which will allow for multi version support.
 
+There is little to no failre management.  Obviously this is a huge part of any commercial product, but I didn't want to spend to much time here yet.
 
 ## Contact
 Please feel free to send me a message at chad.edwards.mail@gmail.com if you are having any troule getting this running.
