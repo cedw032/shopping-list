@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "prep": "rm -R client-front/src/shared; rm -R client-back/src/shared; cp -R shared client-front/src/shared; cp -R shared client-back/src/shared"
+    }
+}
