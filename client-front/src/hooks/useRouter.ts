@@ -26,8 +26,6 @@ export default function useRouter(
     []
   )
 
-  console.log('UIDATA', uiData);
-
   return {
     navigate: (route: Route) => {
       setRoute(route)
