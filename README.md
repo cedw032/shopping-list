@@ -18,7 +18,7 @@ cd ../client-front && yarn && yarn start
 I started this writing tests as I went, but in the name of not spending too much time on it I decided to carry on without.  Obviously I wouldn't do this on a commercial project.
 
 ## useServerState
-This handy hook will load the state from the server, and update the local and remote state as changes are made.  This is a first pass implementations that is still missing caching, local persistence and throttling.
+This handy hook will load the state from the server, and update the local and remote state as changes are made.  This is a first pass implementations that is still missing caching, local persistence and throttling (local persistence of state has been added on the branch 'local-cache').
 It would be quite easy to wire this up to a socket server which would update the app in real time without having to make any changes where `useServerState` is used.
 
 ## EditableTextList
@@ -46,7 +46,7 @@ More test coverage would be great.
 
 Simple rules around the modification of test files can be used to facilitate semantic versioning which will allow for multi version support.
 
-There is little to no failre management.  Obviously this is a huge part of any commercial product, but I didn't want to spend to much time here yet.
+There is little to no failure management.  Obviously this is a huge part of any commercial product, but I didn't want to spend to much time here yet.
 
 In the future it might be nice to keep the types in separate files.
 
