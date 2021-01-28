@@ -1,11 +1,11 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import { UiNode, Style } from '../constants/common'
-import {column} from '../constants/common'
+import { NativeElement, NativeStyle } from '../../constants/common'
+import {column} from '../../constants/common'
 
 type Props = {
-  children?: Array<UiNode>
-  style?: Style
+  children?: Array<NativeElement>
+  style?: NativeStyle
 }
 
 const listStyle = {
@@ -13,7 +13,7 @@ const listStyle = {
   flexDirection: column,
 }
 
-export default function List({
+export default function Column({
   children,
   style,
 }: Props) {

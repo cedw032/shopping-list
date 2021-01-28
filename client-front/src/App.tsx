@@ -1,19 +1,18 @@
-import useRouter from './shared/hooks/useRouter'
-import RouteRenderer from './shared/components/RouteRenderer'
-import NavBar from './shared/components/NavBar'
+import useRouter from './hooks/useRouter'
+import UiTree from './components/driven/UiTree'
+import NavBar from './components/container/NavBar'
+import { home } from './shared/constants/routes'
 
 export default function App() {
   const {
-    routeStructure,
-    navigate
-  } = useRouter('doubleList')
+    uiData,
+    navigate,
+  } = useRouter(home)
 
   return (
     <div style={styles.container}>
-      <NavBar {...{navigate}}/>
-      <RouteRenderer
-        {...{ routeStructure }}
-      />
+      <NavBar {...{ navigate }} />
+      <UiTree {...{ uiData }} />
     </div>
   )
 }

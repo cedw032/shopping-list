@@ -1,14 +1,14 @@
 /* eslint react/no-typos: 0 */
 import 'react'
 import {
-  UiNode,
-  Style,
-} from '../constants/common'
-import { row } from '../constants/common'
+  NativeElement,
+  NativeStyle,
+} from '../../constants/common'
+import { row } from '../../constants/common'
 
 type Props = {
-  children?: Array<UiNode>
-  style?: Style
+  children?: Array<NativeElement>
+  style?: NativeStyle
 }
 
 const listStyle = {
@@ -17,7 +17,7 @@ const listStyle = {
   justifyContent: 'space-around',
 }
 
-export default function List({
+export default function Row({
   children,
   style,
 }: Props) {

@@ -1,9 +1,9 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import List from './List'
-import useServerState from '../hooks/useServerState'
-import type { UserText } from './EditableText'
-import EditableTextList from './EditableTextList'
+import List from '../layout/Column'
+import useState from '../../hooks/state/useState'
+import type { UserText } from '../leaf/EditableText'
+import EditableTextList from '../leaf/EditableTextList'
 
 type ShoppingListId = string
 type ShoppingListItem = UserText
@@ -23,13 +23,18 @@ export default function EditableShoppingList({
   const [
     shoppingList,
     setShoppingList,
-  ] = useServerState(
+  ] = useState(
     path,
     [] as Array<ShoppingListItem>
   )
 
   return (
-    <List key={key} style={{alignItems: 'flex-start'}}>
+    <List
+      key={key}
+      style={{
+        alignItems: 'flex-start',
+      }}
+    >
       <h1>Shopping List</h1>
       <EditableTextList
         list={shoppingList}

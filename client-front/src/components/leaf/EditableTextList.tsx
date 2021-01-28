@@ -1,6 +1,6 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import List from './List'
+import Column from '../layout/Column'
 import type { UserText } from './EditableText'
 import EditableText from './EditableText'
 
@@ -33,16 +33,18 @@ export default function EditableTextList({
   )
 
   return (
-    <List>
-      {[...existingChildren,
-      <EditableText
-        key={list.length}
-        text=""
-        onBlur={() => {}}
-        setText={(t) =>
-          setList([...list, t])
-        }
-      />]}
-    </List>
+    <Column>
+      {[
+        ...existingChildren,
+        <EditableText
+          key={list.length}
+          text=""
+          onBlur={() => {}}
+          setText={(t) =>
+            setList([...list, t])
+          }
+        />,
+      ]}
+    </Column>
   )
 }

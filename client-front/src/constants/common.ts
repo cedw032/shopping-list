@@ -1,7 +1,5 @@
-export type UiNode =
-  | JSX.Element
-
-export type Style = React.CSSProperties
+export type NativeElement = JSX.Element
+export type NativeStyle = React.CSSProperties
 
 type FlexDirection = 'row' | 'column'
 export const row: FlexDirection = 'row'

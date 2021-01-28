@@ -1,16 +1,19 @@
-import type { NotFound } from './shared/contracts'
-import { notFound } from './shared/contracts'
+import type { NotFound } from './shared/constants/results'
+import { notFound } from './shared/constants/results'
 import type {
-  RouteStructure,
-} from './shared/hooks/useRouter'
-import type {NavItemProps} from './shared/contracts'
+  UiTreeData,
+  NavItemData,
+} from './shared/constants/entities'
 
-const mockNavItems: Array<NavItemProps> = [
-  {label: 'Home', route: 'home'},
-  {label: 'Double List', route: 'doubleList'},
+const mockNavItems: Array<NavItemData> = [
+  { label: 'Home', route: 'home' },
+  {
+    label: 'Row View',
+    route: 'other',
+  },
 ]
 
-const mockHomeRoute: RouteStructure = [
+const mockHomeRoute: UiTreeData = [
   {
     componentName:
       'EditableShoppingList',
@@ -20,9 +23,9 @@ const mockHomeRoute: RouteStructure = [
   },
 ]
 
-const mockDoubleListRoute: RouteStructure = [
+const mockDoubleListRoute: UiTreeData = [
   {
-    componentName: 'SplitView',
+    componentName: 'Row',
     props: {},
     children: [
       {
@@ -39,6 +42,13 @@ const mockDoubleListRoute: RouteStructure = [
           id: 'test2',
         },
       },
+      {
+        componentName:
+          'EditableShoppingList',
+        props: {
+          id: 'test2',
+        },
+      },
     ],
   },
 ]
@@ -46,7 +56,7 @@ const mockDoubleListRoute: RouteStructure = [
 const mockState = {
   navItems: mockNavItems,
   route__home: mockHomeRoute,
-  route__doubleList: mockDoubleListRoute,
+  route__other: mockDoubleListRoute,
 } as any
 
 export type StateAccessPath = string
