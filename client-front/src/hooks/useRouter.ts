@@ -1,6 +1,6 @@
 import { useState as useReactState } from 'react'
 import { UiTreeData } from '../shared/constants/entities'
-import useState from './state/useState'
+import useState from './useState'
 import type { Route } from '../shared/constants/routes'
 
 export type Navigate = (

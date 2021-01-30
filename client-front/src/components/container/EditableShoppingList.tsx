@@ -1,7 +1,7 @@
 /* eslint react/no-typos: 0 */
 import 'react'
 import List from '../layout/Column'
-import useState from '../../hooks/state/useState'
+import useState from '../../hooks/useState'
 import type { UserText } from '../leaf/EditableText'
 import EditableTextList from '../leaf/EditableTextList'
 

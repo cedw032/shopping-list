@@ -4,13 +4,13 @@ import {
   useRef,
   useState as useReactState,
 } from 'react'
-import type { StateIndex } from '../../state/index'
-import { notFound } from '../../shared/constants/results'
-import { cloudState } from '../../state/cloudState'
-import { inMemoryState } from '../../state/inMemoryState'
-import { localPersistedState } from '../../state/localPersistedState'
-import type { Success } from '../../shared/constants/results'
-import { success } from '../../shared/constants/results'
+import type { StateIndex } from '../state/index'
+import { notFound } from '../shared/constants/results'
+import { cloudState } from '../state/cloudState'
+import { inMemoryState } from '../state/inMemoryState'
+import { localPersistedState } from '../state/localPersistedState'
+import type { Success } from '../shared/constants/results'
+import { success } from '../shared/constants/results'
 
 type StateAccess<T> = [
   T,
