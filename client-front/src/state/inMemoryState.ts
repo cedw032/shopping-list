@@ -1,26 +1,23 @@
-import type { StateIndex } from './index'
-import type { NotFound } from '../shared/constants/results'
-import { notFound } from '../shared/constants/results'
+import type { StateProvider } from './index'
+import {
+  success,
+  notFound,
+} from '../shared/constants/results'
 const state = {}
 
-type InMemoryState = {
-  get: <T>(
-    path: StateIndex
-  ) => T | NotFound
-  set: <T>(
-    path: StateIndex,
-    v: T
-  ) => void
-}
+type InMemoryState = StateProvider
 
 export const inMemoryState: InMemoryState = {
-  // @ts-ignore
-  get: (path): T =>
+  get: async (path) => {
     // @ts-ignore
-    state[path] === undefined
+    const v = state[path]
+    return v === undefined
       ? notFound
-      : // @ts-ignore
-        state[path],
-  // @ts-ignore
-  set: (path, v): void => (state[path] = v),
+      : v
+  },
+  put: async (path, v) => {
+    // @ts-ignore
+    state[path] = v
+    return success
+  },
 }

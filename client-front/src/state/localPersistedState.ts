@@ -1,20 +1,13 @@
-import type { StateIndex } from './index'
-import type { NotFound } from '../shared/constants/results'
-import { notFound } from '../shared/constants/results'
+import { StateProvider } from './index'
+import {
+  notFound,
+  success,
+} from '../shared/constants/results'
 
-type LocalPersistedState = {
-  get: <T>(
-    index: StateIndex
-  ) => T | NotFound
-  set: <T>(
-    index: StateIndex,
-    v: T
-  ) => void
-}
+type LocalPersistedState = StateProvider
 
 export const localPersistedState: LocalPersistedState = {
-  // @ts-ignore
-  get: (index): T => {
+  get: async (index) => {
     const v = localStorage.getItem(
       index
     )
@@ -22,9 +15,11 @@ export const localPersistedState: LocalPersistedState = {
       ? notFound
       : JSON.parse(v)
   },
-  set: (index, v): void =>
+  put: async (index, v) => {
     localStorage.setItem(
       index,
       JSON.stringify(v)
-    ),
+    )
+    return success
+  },
 }

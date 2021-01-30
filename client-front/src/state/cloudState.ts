@@ -1,21 +1,13 @@
-import type { NotFound } from '../shared/constants/results'
-import type { StateIndex } from './index'
+import { StateProvider } from './index'
+import { success } from '../shared/constants/results'
 
 const stateUrl =
   'http://localhost:9090/state'
 
-type CloudState = {
-  set: <T>(
-    path: StateIndex,
-    t: T
-  ) => Promise<void>
-  get: <T>(
-    path: StateIndex
-  ) => Promise<T | NotFound>
-}
+type CloudState = StateProvider
 
 export const cloudState: CloudState = {
-  set: async (path, v) => {
+  put: async (path, v) => {
     fetch(`${stateUrl}/${path}`, {
       method: 'PUT',
       headers: {
@@ -24,6 +16,7 @@ export const cloudState: CloudState = {
       },
       body: JSON.stringify(v),
     })
+    return success
   },
   get: async (path) => {
     const response = await fetch(

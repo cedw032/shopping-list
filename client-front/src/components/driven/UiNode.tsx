@@ -12,7 +12,6 @@ export default function UiNode({
   children,
 }: Props) {
   const component =
-    // @ts-ignore
     componentSet[componentName]
   if (component === undefined) {
     console.error(
