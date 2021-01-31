@@ -14,6 +14,7 @@ type Props = {
   index: StateIndex
   classNames: Array<ClassName>
   defaultText: string
+  placeholder: string
   onBlur?: (v: UserText) => void
   onChange?: () => void
 }
@@ -22,6 +23,7 @@ export default function EditableTextBinded({
   index,
   classNames,
   defaultText,
+  placeholder,
   onBlur,
   onChange,
 }: Props) {
@@ -35,6 +37,7 @@ export default function EditableTextBinded({
       {...{
         text: text.v,
         defaultText,
+        placeholder,
         key: indexToKey(index),
         classNames,
         setText: (t) => {

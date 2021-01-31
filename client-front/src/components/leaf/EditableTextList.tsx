@@ -8,6 +8,7 @@ import EditableText from './EditableText'
 type Props = {
   classNames: Array<ClassName>
   childClassNames: Array<ClassName>
+  placeholder: string
   list: Array<UserText>
   setList: (l: Array<UserText>) => void
 }
@@ -15,6 +16,7 @@ type Props = {
 export default function EditableTextList({
   classNames,
   childClassNames,
+  placeholder,
   list,
   setList,
 }: Props) {
@@ -24,6 +26,7 @@ export default function EditableTextList({
         classNames={childClassNames}
         key={i}
         text={child}
+        placeholder={placeholder}
         onBlur={() =>
           setList(
             list.filter((t) => t !== '')
@@ -46,6 +49,7 @@ export default function EditableTextList({
           key={list.length}
           classNames={childClassNames}
           text=""
+          placeholder={placeholder}
           onBlur={() => {}}
           setText={(t) =>
             setList([...list, t])

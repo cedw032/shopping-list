@@ -14,6 +14,7 @@ import {
 
 type Props = {
   index: StateIndex
+  placeholder: string
   childType: StateType
   classNames: Array<ClassName>
   childClassNames: Array<ClassName>
@@ -25,6 +26,7 @@ type ChildList = Array<StateIndex>
 
 export default function EditableTextBindedList({
   index,
+  placeholder,
   childType,
   classNames,
   childClassNames,
@@ -42,6 +44,7 @@ export default function EditableTextBindedList({
         key={indexToKey(child)}
         classNames={childClassNames}
         defaultText={''}
+        placeholder={placeholder}
         index={child}
         onBlur={(t) => {
           if (t === '') {
@@ -77,6 +80,7 @@ export default function EditableTextBindedList({
             newIndexRef.current
           )}
           defaultText={''}
+          placeholder={placeholder}
           index={newIndexRef.current}
           classNames={childClassNames}
           onChange={() => {

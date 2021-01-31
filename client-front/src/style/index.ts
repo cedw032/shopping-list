@@ -14,6 +14,7 @@ export type ClassName =
   | 'row'
   | 'column'
   | 'spaceAround'
+  | 'spaceBetween'
   | 'scrollHorizontal'
   | 'scrollVertical'
   | 'scrollingRow'
@@ -61,6 +62,9 @@ const column = {
 }
 const spaceAround: NativeStyle = {
   justifyContent: 'space-around',
+}
+const spaceBetween: NativeStyle = {
+  justifyContent: 'space-between',
 }
 
 const scrollHorizontal = {
@@ -112,6 +116,8 @@ const editableShoppingListItems: NativeStyle = {
 }
 
 const navBar: NativeStyle = {
+  ...row,
+  ...spaceBetween,
   boxShadow: `0 0 ${spacing[0]} gray`,
   backgroundColor: 'black',
   padding: spacing[2],
@@ -130,6 +136,7 @@ const styles: StyleSheet = {
   row,
   column,
   spaceAround,
+  spaceBetween,
   scrollHorizontal,
   scrollVertical,
   scrollingRow,

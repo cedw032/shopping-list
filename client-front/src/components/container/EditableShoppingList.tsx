@@ -26,8 +26,9 @@ export default function EditableShoppingList({
     >
       <EditableTextBinded
         defaultText={
-          'New Shopping List'
+          ''
         }
+        placeholder={'Enter a title here...'}
         index={{
           type: 'shoppingListTitle',
           id,
@@ -41,6 +42,7 @@ export default function EditableShoppingList({
           type: 'ShoppingList',
           id,
         }}
+        placeholder={'Enter an item here...'}
         classNames={[
           'editableShoppingListItems',
         ]}

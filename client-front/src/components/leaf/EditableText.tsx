@@ -8,6 +8,7 @@ export type UserText = string
 type Props = {
   text: UserText
   classNames: Array<ClassName>
+  placeholder: string
   setText: (t: UserText) => void
   onBlur?: (t: UserText) => void
 }
@@ -15,6 +16,7 @@ type Props = {
 export default function EditableText({
   text,
   classNames,
+  placeholder,
   setText,
   onBlur,
 }: Props) {
@@ -22,6 +24,7 @@ export default function EditableText({
     <input
       type="text"
       value={text}
+      placeholder={placeholder}
       style={style([
         'editableText',
         ...classNames,
