@@ -22,7 +22,10 @@ export default function EditableText({
     <input
       type="text"
       value={text}
-      style={style(['editableText', ...classNames])}
+      style={style([
+        'editableText',
+        ...classNames,
+      ])}
       onBlur={() =>
         onBlur && onBlur(text)
       }

@@ -1,10 +1,13 @@
 import { RouteName } from './routes'
 
+export const editableShoppingListListName =
+  'EditableShoppingListList'
 export const editableShoppingListName =
   'EditableShoppingList'
 export const viewName = 'View'
 
 export type ComponentName =
+  | typeof editableShoppingListListName
   | typeof editableShoppingListName
   | typeof viewName
 

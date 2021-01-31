@@ -58,3 +58,7 @@ export function newEntityIndex(
     id: guid(),
   }
 }
+
+export function newStateId(): StateId {
+  return guid()
+}

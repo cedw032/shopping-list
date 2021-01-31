@@ -12,7 +12,7 @@ const mockNavItems: Array<NavItemData> = [
 const mockHomeRoute: UiTreeData = [
   {
     componentName:
-      'EditableShoppingList',
+      'EditableShoppingListList',
     props: {
       id: 'test2',
     },

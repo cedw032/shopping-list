@@ -18,6 +18,7 @@ type Props = {
   classNames: Array<ClassName>
   childClassNames: Array<ClassName>
   onChange?: () => void
+  onEmpty?: () => void
 }
 
 type ChildList = Array<StateIndex>
@@ -28,6 +29,7 @@ export default function EditableTextBindedList({
   classNames,
   childClassNames,
   onChange,
+  onEmpty,
 }: Props) {
   const [
     children,
@@ -42,12 +44,15 @@ export default function EditableTextBindedList({
         defaultText={''}
         index={child}
         onBlur={(t) => {
-          t === '' &&
-            setChildren(
-              children.filter(
-                (c) => c !== child
-              )
+          if (t === '') {
+            const newChildren = children.filter(
+              (c) => c !== child
             )
+            setChildren(newChildren)
+            newChildren.length === 0 &&
+              onEmpty &&
+              onEmpty()
+          }
         }}
         onChange={onChange}
       />

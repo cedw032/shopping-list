@@ -13,6 +13,7 @@ const bold_: FontWeight = 'bold'
 export type ClassName =
   | 'row'
   | 'column'
+  | 'spaceAround'
   | 'scrollHorizontal'
   | 'scrollVertical'
   | 'scrollingRow'
@@ -23,6 +24,7 @@ export type ClassName =
   | 'editableShoppingListItems'
   | 'navBar'
   | 'navItem'
+  | 'scrollingWrappedRow'
 
 type StyleSheet = {
   [Key in ClassName]: NativeStyle
@@ -57,6 +59,10 @@ const column = {
   display: 'flex',
   flexDirection: column_,
 }
+const spaceAround: NativeStyle = {
+  justifyContent: 'space-around',
+}
+
 const scrollHorizontal = {
   overflowX: auto_,
 }
@@ -71,6 +77,13 @@ const scrollingColumn = {
   ...column,
   ...scrollVertical,
 }
+
+const scrollingWrappedRow: NativeStyle = {
+  ...row,
+  ...scrollVertical,
+  flexWrap: 'wrap',
+}
+
 const editableText = {
   border: 'none',
   outline: 'none',
@@ -89,13 +102,13 @@ const editableShoppingList: NativeStyle = {
   boxShadow: `0 0 ${spacing[0]} gray`,
   borderRadius: spacing[1],
   padding: spacing[1],
-  margin: spacing[2],
+  margin: `${spacing[2]} ${spacing[1]}`,
 }
 
 const editableShoppingListItems: NativeStyle = {
   ...scrollingColumn,
   borderRadius: spacing[1],
-  maxHeight: '500px',
+  height: '300px',
 }
 
 const navBar: NativeStyle = {
@@ -116,10 +129,12 @@ const navItem: NativeStyle = {
 const styles: StyleSheet = {
   row,
   column,
+  spaceAround,
   scrollHorizontal,
   scrollVertical,
   scrollingRow,
   scrollingColumn,
+  scrollingWrappedRow,
   editableText,
   shoppingListTitle,
   editableShoppingList,
