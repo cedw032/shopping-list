@@ -15,7 +15,7 @@ export default function EditableShoppingList({
 }: Props) {
   return (
     <View
-      classNames={['scrollingColumn']}
+      classNames={['editableShoppingList']}
     >
       <EditableTextBinded
         defaultText={'New Shopping List'}
@@ -30,7 +30,7 @@ export default function EditableShoppingList({
           type: 'ShoppingList',
           id,
         }}
-        classNames={[]}
+        classNames={['editableShoppingListItems']}
         childClassNames={[]}
         childType="ShoppingListItem"
       />

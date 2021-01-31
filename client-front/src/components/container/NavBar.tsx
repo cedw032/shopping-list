@@ -4,7 +4,8 @@ import type { Navigate } from '../../hooks/useRouter'
 import useState from '../../hooks/useState'
 import NavItem from '../leaf/NavItem'
 import type { NavItemData } from '../../shared/constants/entities'
-import React, { Fragment } from 'react'
+import View from '../layout/View'
+import React from 'react'
 
 type NavBarProps = {
   navigate: Navigate
@@ -19,7 +20,7 @@ export default function NavBar({
   )
 
   return (
-    <Fragment>
+    <View classNames={['navBar']}>
       {navItemProps.map((props, i) => (
         <NavItem
           {...{
@@ -29,6 +30,6 @@ export default function NavBar({
           }}
         />
       ))}
-    </Fragment>
+    </View>
   )
 }

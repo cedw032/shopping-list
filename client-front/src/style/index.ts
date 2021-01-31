@@ -8,7 +8,7 @@ type Overflow = 'auto'
 const auto_: Overflow = 'auto'
 
 type FontWeight = 'bold'
-const bold_: FontWeight = 'bold';
+const bold_: FontWeight = 'bold'
 
 export type ClassName =
   | 'row'
@@ -19,6 +19,10 @@ export type ClassName =
   | 'scrollingColumn'
   | 'editableText'
   | 'shoppingListTitle'
+  | 'editableShoppingList'
+  | 'editableShoppingListItems'
+  | 'navBar'
+  | 'navItem'
 
 type StyleSheet = {
   [Key in ClassName]: NativeStyle
@@ -37,6 +41,13 @@ export function style(
     }
   }, {})
 }
+
+const spacing = [
+  '5px',
+  '10px',
+  '20px',
+  '40px',
+]
 
 const row = {
   display: 'flex',
@@ -61,13 +72,45 @@ const scrollingColumn = {
   ...scrollVertical,
 }
 const editableText = {
-    border: 'none',
-    outline: 'none',
-    borderBottom: '1px solid black'
+  border: 'none',
+  outline: 'none',
+  boxShadow: `0 0 ${spacing[0]} gray`,
+  borderRadius: spacing[1],
+  padding: spacing[1],
+  margin: spacing[0],
 }
 const shoppingListTitle = {
-    fontWeight: bold_,
-    fontSize: '1.6rem'
+  fontWeight: bold_,
+  fontSize: '1.6rem',
+  marginBottom: spacing[2],
+}
+const editableShoppingList: NativeStyle = {
+  maxWidth: '400px',
+  boxShadow: `0 0 ${spacing[0]} gray`,
+  borderRadius: spacing[1],
+  padding: spacing[1],
+  margin: spacing[2],
+}
+
+const editableShoppingListItems: NativeStyle = {
+  ...scrollingColumn,
+  borderRadius: spacing[1],
+  maxHeight: '500px',
+}
+
+const navBar: NativeStyle = {
+  boxShadow: `0 0 ${spacing[0]} gray`,
+  backgroundColor: 'black',
+  padding: spacing[2],
+}
+
+const navItem: NativeStyle = {
+  color: 'white',
+  fontWeight: bold_,
+  margin: spacing[0],
+  padding: spacing[1],
+  borderRadius: spacing[0],
+  cursor: 'pointer',
 }
 
 const styles: StyleSheet = {
@@ -79,4 +122,8 @@ const styles: StyleSheet = {
   scrollingColumn,
   editableText,
   shoppingListTitle,
+  editableShoppingList,
+  editableShoppingListItems,
+  navBar,
+  navItem,
 }
