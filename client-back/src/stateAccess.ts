@@ -6,10 +6,10 @@ import type {
 } from './shared/constants/entities'
 
 const mockNavItems: Array<NavItemData> = [
-  { label: 'Home', route: 'home' },
+  { label: 'Home', routeName: 'home' },
   {
     label: 'Row View',
-    route: 'other',
+    routeName: 'other',
   },
 ]
 
@@ -54,7 +54,7 @@ const mockDoubleListRoute: UiTreeData = [
 ]
 
 const mockState = {
-  navItems: mockNavItems,
+  navItems__0: mockNavItems,
   route__home: mockHomeRoute,
   route__other: mockDoubleListRoute,
 } as any

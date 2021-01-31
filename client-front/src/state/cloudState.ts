@@ -1,4 +1,4 @@
-import { StateProvider } from './index'
+import type { StateProvider } from './index'
 import { success } from '../shared/constants/results'
 
 const stateUrl =
@@ -7,8 +7,8 @@ const stateUrl =
 type CloudState = StateProvider
 
 export const cloudState: CloudState = {
-  put: async (path, v) => {
-    fetch(`${stateUrl}/${path}`, {
+  put: async (k, v) => {
+    fetch(`${stateUrl}/${k}`, {
       method: 'PUT',
       headers: {
         'content-type':
@@ -18,9 +18,9 @@ export const cloudState: CloudState = {
     })
     return success
   },
-  get: async (path) => {
+  get: async (k) => {
     const response = await fetch(
-      `${stateUrl}/${path}`
+      `${stateUrl}/${k}`
     )
     return await response.json()
   },

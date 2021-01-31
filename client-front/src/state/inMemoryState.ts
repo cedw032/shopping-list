@@ -8,16 +8,16 @@ const state = {}
 type InMemoryState = StateProvider
 
 export const inMemoryState: InMemoryState = {
-  get: async (path) => {
+  get: async (k) => {
     // @ts-ignore
-    const v = state[path]
+    const v = state[k]
     return v === undefined
       ? notFound
       : v
   },
-  put: async (path, v) => {
+  put: async (k, v) => {
     // @ts-ignore
-    state[path] = v
+    state[k] = v
     return success
   },
 }

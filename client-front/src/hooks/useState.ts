@@ -4,7 +4,11 @@ import {
   useRef,
   useState as useReactState,
 } from 'react'
-import type { StateIndex } from '../state/index'
+import type {
+  Entity,
+  StateIndex,
+} from '../state'
+import { indexToKey } from '../state'
 import { notFound } from '../shared/constants/results'
 import { cloudState } from '../state/cloudState'
 import { inMemoryState } from '../state/inMemoryState'
@@ -17,10 +21,14 @@ type StateAccess<T> = [
   (t: T) => Success
 ]
 
-export default function useState<T>(
-  path: StateIndex,
+export default function useState<
+  T extends Entity
+>(
+  index: StateIndex,
   defaultState: T
 ): StateAccess<T> {
+  const key = indexToKey(index)
+
   const [
     reactState,
     setReactState,
@@ -33,28 +41,28 @@ export default function useState<T>(
 
   const getState = useMemo(() => {
     async function getState() {
-
       const inMemory = await inMemoryState.get<T>(
-        path
+        key
       )
-      inMemory !== reactStateRef.current &&
+      inMemory !==
+        reactStateRef.current &&
         inMemory !== notFound &&
         setReactState(inMemory)
 
       const cloud = await cloudState.get<T>(
-        path
+        key
       )
 
       if (cloud !== notFound) {
         setReactState(cloud)
-        inMemoryState.put(path, cloud)
+        inMemoryState.put(key, cloud)
         localPersistedState.put(
-          path,
+          key,
           cloud
         )
       } else {
         const localPersisted = await localPersistedState.get<T>(
-          path
+          key
         )
         if (
           localPersisted !== notFound
@@ -65,7 +73,7 @@ export default function useState<T>(
               localPersisted
             )
           inMemoryState.put(
-            path,
+            key,
             localPersisted
           )
         }
@@ -73,19 +81,19 @@ export default function useState<T>(
     }
     return getState
   }, [
-    path,
+    key,
     setReactState,
     reactStateRef,
   ])
 
   useEffect(() => {
     getState()
-  }, [path, getState])
+  }, [key, getState])
 
   function setState(t: T) {
     setReactState(t)
-    inMemoryState.put(path, t)
-    cloudState.put(path, t)
+    inMemoryState.put(key, t)
+    cloudState.put(key, t)
     return success
   }
 

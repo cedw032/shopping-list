@@ -14,7 +14,7 @@ export default function NavBar({
   navigate,
 }: NavBarProps) {
   const [navItemProps] = useState(
-    'navItems',
+    { type: 'navItems', id: '0' }, // This will ultimately need to work like a container when that is pulled out
     [] as Array<NavItemData>
   )
 
@@ -22,7 +22,11 @@ export default function NavBar({
     <Fragment>
       {navItemProps.map((props, i) => (
         <NavItem
-          {...{ key: i, ...props, navigate }}
+          {...{
+            key: i,
+            ...props,
+            navigate,
+          }}
         />
       ))}
     </Fragment>

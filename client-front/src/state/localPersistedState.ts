@@ -7,17 +7,15 @@ import {
 type LocalPersistedState = StateProvider
 
 export const localPersistedState: LocalPersistedState = {
-  get: async (index) => {
-    const v = localStorage.getItem(
-      index
-    )
+  get: async (k) => {
+    const v = localStorage.getItem(k)
     return v === null
       ? notFound
       : JSON.parse(v)
   },
-  put: async (index, v) => {
+  put: async (k, v) => {
     localStorage.setItem(
-      index,
+      k,
       JSON.stringify(v)
     )
     return success

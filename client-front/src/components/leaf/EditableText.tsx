@@ -1,16 +1,19 @@
 /* eslint react/no-typos: 0 */
 import 'react'
+import { NativeStyle } from '../../constants/common'
 
 export type UserText = string
 
 type Props = {
   text: UserText
+  style?: NativeStyle
   setText: (t: UserText) => void
-  onBlur: () => void
+  onBlur?: (t: UserText) => void
 }
 
 export default function EditableText({
   text,
+  style,
   setText,
   onBlur,
 }: Props) {
@@ -18,7 +21,10 @@ export default function EditableText({
     <input
       type="text"
       value={text}
-      onBlur={onBlur}
+      style={style}
+      onBlur={() =>
+        onBlur && onBlur(text)
+      }
       onChange={(e) =>
         setText(e.target.value)
       }

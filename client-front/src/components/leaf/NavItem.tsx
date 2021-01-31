@@ -7,13 +7,15 @@ export type Props = NavItemData & {
 
 export default function NavItem({
   label,
-  route,
+  routeName,
   navigate,
 }: Props) {
   return (
     <button
       children={label}
-      onClick={() => navigate(route)}
+      onClick={() =>
+        navigate(routeName)
+      }
     />
   )
 }

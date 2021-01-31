@@ -1,4 +1,4 @@
-import { Route } from './routes'
+import { RouteName } from './routes'
 
 export const editableShoppingListName =
   'EditableShoppingList'
@@ -21,5 +21,5 @@ export type UiTreeData = Array<UiNodeData>
 export type NavLabel = string
 export type NavItemData = {
   label: string
-  route: Route
+  routeName: RouteName
 }

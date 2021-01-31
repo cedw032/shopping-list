@@ -1,10 +1,10 @@
 import { useState as useReactState } from 'react'
 import { UiTreeData } from '../shared/constants/entities'
 import useState from './useState'
-import type { Route } from '../shared/constants/routes'
+import type { RouteName } from '../shared/constants/routes'
 
 export type Navigate = (
-  route: Route
+  routeName: RouteName
 ) => void
 
 type Router = {
@@ -12,23 +12,23 @@ type Router = {
   uiData: UiTreeData
 }
 
-const basePath = 'route'
-
 export default function useRouter(
-  defaultRoute: Route
+  defaultRouteName: RouteName
 ): Router {
   const [
-    route,
-    setRoute,
-  ] = useReactState(defaultRoute)
+    routeName,
+    setRouteName,
+  ] = useReactState(defaultRouteName)
   const [uiData] = useState<UiTreeData>(
-    `${basePath}__${route}`,
+    { type: 'route', id: routeName },
     []
   )
 
   return {
-    navigate: (route: Route) => {
-      setRoute(route)
+    navigate: (
+      routeName: RouteName
+    ) => {
+      setRouteName(routeName)
     },
     uiData,
   }

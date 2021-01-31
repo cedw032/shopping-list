@@ -4,25 +4,27 @@ import {
   NativeElement,
   NativeStyle,
 } from '../../constants/common'
-import { row } from '../../constants/common'
+import Row from './Row'
 
 type Props = {
   children?: Array<NativeElement>
   style?: NativeStyle
 }
 
-const rowStyle = {
-  display: 'flex',
-  flexDirection: row,
+const scrollStyle: React.CSSProperties = {
+  overflowX: 'scroll',
 }
 
-export default function Row({
+export default function ScrollableRow({
   children,
   style,
 }: Props) {
   return (
-    <div
-      style={{ ...style, ...rowStyle }}
+    <Row
+      style={{
+        ...style,
+        ...scrollStyle,
+      }}
       children={children}
     />
   )
