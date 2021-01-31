@@ -7,10 +7,6 @@ import type {
 
 const mockNavItems: Array<NavItemData> = [
   { label: 'Home', routeName: 'home' },
-  {
-    label: 'Row View',
-    routeName: 'other',
-  },
 ]
 
 const mockHomeRoute: UiTreeData = [
@@ -18,45 +14,14 @@ const mockHomeRoute: UiTreeData = [
     componentName:
       'EditableShoppingList',
     props: {
-      id: 'test',
+      id: 'test2',
     },
-  },
-]
-
-const mockDoubleListRoute: UiTreeData = [
-  {
-    componentName: 'Row',
-    props: {},
-    children: [
-      {
-        componentName:
-          'EditableShoppingList',
-        props: {
-          id: 'test',
-        },
-      },
-      {
-        componentName:
-          'EditableShoppingList',
-        props: {
-          id: 'test2',
-        },
-      },
-      {
-        componentName:
-          'EditableShoppingList',
-        props: {
-          id: 'test2',
-        },
-      },
-    ],
   },
 ]
 
 const mockState = {
   navItems__0: mockNavItems,
   route__home: mockHomeRoute,
-  route__other: mockDoubleListRoute,
 } as any
 
 export type StateAccessPath = string

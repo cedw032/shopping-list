@@ -1,7 +1,8 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import Column from '../layout/Column'
+import View from '../layout/View'
 import EditableTextBindedList from './EditableTextBindedList'
+import EditableTextBinded from './EditableTextBinded'
 
 type ShoppingListId = string
 
@@ -13,19 +14,26 @@ export default function EditableShoppingList({
   id,
 }: Props) {
   return (
-    <Column
-      style={{
-        alignItems: 'flex-start',
-      }}
+    <View
+      classNames={['scrollingColumn']}
     >
-      <h1>Shopping List</h1>
+      <EditableTextBinded
+        defaultText={'New Shopping List'}
+        index={{
+          type: 'shoppingListTitle',
+          id,
+        }}
+        classNames={['shoppingListTitle']}
+      />
       <EditableTextBindedList
         index={{
           type: 'ShoppingList',
           id,
         }}
+        classNames={[]}
+        childClassNames={[]}
         childType="ShoppingListItem"
       />
-    </Column>
+    </View>
   )
 }

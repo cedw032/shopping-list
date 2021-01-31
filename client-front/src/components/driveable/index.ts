@@ -1,17 +1,17 @@
 import { ComponentName } from '../../shared/constants/entities'
 import { NativeElement } from '../../constants/common'
 import EditableShoppingList from '../container/EditableShoppingList'
-import Row from '../layout/Row'
-import Column from '../layout/Column'
+import View from '../layout/View'
 
 type ComponentSet = {
-  [Key in ComponentName]: (a: any) => NativeElement
+  [Key in ComponentName]: (
+    a: any
+  ) => NativeElement
 }
 
 const componentSet: ComponentSet = {
   EditableShoppingList,
-  Row,
-  Column,
+  View,
 }
 
 export default componentSet

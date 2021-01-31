@@ -1,19 +1,20 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import { NativeStyle } from '../../constants/common'
+import type { ClassName } from '../../style'
+import { style } from '../../style'
 
 export type UserText = string
 
 type Props = {
   text: UserText
-  style?: NativeStyle
+  classNames: Array<ClassName>
   setText: (t: UserText) => void
   onBlur?: (t: UserText) => void
 }
 
 export default function EditableText({
   text,
-  style,
+  classNames,
   setText,
   onBlur,
 }: Props) {
@@ -21,7 +22,7 @@ export default function EditableText({
     <input
       type="text"
       value={text}
-      style={style}
+      style={style(['editableText', ...classNames])}
       onBlur={() =>
         onBlur && onBlur(text)
       }

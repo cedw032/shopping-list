@@ -1,21 +1,27 @@
 /* eslint react/no-typos: 0 */
 import 'react'
-import Column from '../layout/Column'
+import { ClassName } from '../../style'
+import View from '../layout/View'
 import type { UserText } from './EditableText'
 import EditableText from './EditableText'
 
 type Props = {
+  classNames: Array<ClassName>
+  childClassNames: Array<ClassName>
   list: Array<UserText>
   setList: (l: Array<UserText>) => void
 }
 
 export default function EditableTextList({
+  classNames,
+  childClassNames,
   list,
   setList,
 }: Props) {
   const existingChildren = list.map(
     (child, i) => (
       <EditableText
+        classNames={childClassNames}
         key={i}
         text={child}
         onBlur={() =>
@@ -33,11 +39,12 @@ export default function EditableTextList({
   )
 
   return (
-    <Column>
+    <View classNames={classNames}>
       {[
         ...existingChildren,
         <EditableText
           key={list.length}
+          classNames={childClassNames}
           text=""
           onBlur={() => {}}
           setText={(t) =>
@@ -45,6 +52,6 @@ export default function EditableTextList({
           }
         />,
       ]}
-    </Column>
+    </View>
   )
 }

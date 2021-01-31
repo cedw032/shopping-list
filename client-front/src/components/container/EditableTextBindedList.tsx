@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import Column from '../layout/Column'
-import { NativeStyle } from '../../constants/common'
+import View from '../layout/View'
+import type { ClassName } from '../../style'
 import {
   StateIndex,
   StateType,
@@ -15,8 +15,8 @@ import {
 type Props = {
   index: StateIndex
   childType: StateType
-  style?: NativeStyle
-  childStyle?: NativeStyle
+  classNames: Array<ClassName>
+  childClassNames: Array<ClassName>
   onChange?: () => void
 }
 
@@ -25,8 +25,8 @@ type ChildList = Array<StateIndex>
 export default function EditableTextBindedList({
   index,
   childType,
-  style,
-  childStyle,
+  classNames,
+  childClassNames,
   onChange,
 }: Props) {
   const [
@@ -38,7 +38,8 @@ export default function EditableTextBindedList({
     (child) => (
       <EditableTextBinded
         key={indexToKey(child)}
-        style={childStyle}
+        classNames={childClassNames}
+        defaultText={''}
         index={child}
         onBlur={(t) => {
           t === '' &&
@@ -58,14 +59,21 @@ export default function EditableTextBindedList({
   )
 
   return (
-    <Column {...{ style }}>
+    <View
+      classNames={[
+        ...classNames,
+        'scrollingColumn',
+      ]}
+    >
       {[
         ...existingChildren,
         <EditableTextBinded
           key={indexToKey(
             newIndexRef.current
           )}
+          defaultText={''}
           index={newIndexRef.current}
+          classNames={childClassNames}
           onChange={() => {
             setChildren([
               ...children,
@@ -78,6 +86,6 @@ export default function EditableTextBindedList({
           }}
         />,
       ]}
-    </Column>
+    </View>
   )
 }

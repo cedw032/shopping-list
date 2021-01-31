@@ -2,13 +2,11 @@ import { RouteName } from './routes'
 
 export const editableShoppingListName =
   'EditableShoppingList'
-export const ColumnName = 'Column'
-export const RowName = 'Row'
+export const viewName = 'View'
 
 export type ComponentName =
   | typeof editableShoppingListName
-  | typeof ColumnName
-  | typeof RowName
+  | typeof viewName
 
 export type UiNodeData = {
   componentName: ComponentName

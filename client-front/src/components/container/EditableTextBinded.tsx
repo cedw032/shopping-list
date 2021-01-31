@@ -6,34 +6,37 @@ import {
 } from '../../state'
 import { valueToEntity } from '../../state'
 import useState from '../../hooks/useState'
-import { NativeStyle } from '../../constants/common'
+import type { ClassName } from '../../style'
 import EditableText from '../leaf/EditableText'
 import type { UserText } from '../leaf/EditableText'
 
 type Props = {
   index: StateIndex
-  style?: NativeStyle
+  classNames: Array<ClassName>
+  defaultText: string
   onBlur?: (v: UserText) => void
   onChange?: () => void
 }
 
 export default function EditableTextBinded({
   index,
-  style,
+  classNames,
+  defaultText,
   onBlur,
   onChange,
 }: Props) {
   const [text, setText] = useState(
     index,
-    valueToEntity('')
+    valueToEntity(defaultText)
   )
 
   return (
     <EditableText
       {...{
         text: text.v,
+        defaultText,
         key: indexToKey(index),
-        style,
+        classNames,
         setText: (t) => {
           setText(valueToEntity(t))
           onChange && onChange()
