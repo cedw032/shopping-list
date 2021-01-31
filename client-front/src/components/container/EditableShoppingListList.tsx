@@ -42,7 +42,7 @@ export default function EditableShoppingListList({}: Props) {
   )
 
   return (
-    <View classNames={['scrollingWrappedRow', 'spaceAround']}>
+    <View classNames={['scrollingWrappedRow']}>
       {[
         ...existingShoppingLists,
         <EditableShoppingList
